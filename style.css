@@ -38,3 +38,9 @@ img:hover {
 .visible {
   opacity: 1;
 }
+
+figcaption {
+  margin-top: 5px;
+  text-align: center;
+  font-size: 14px;
+}
