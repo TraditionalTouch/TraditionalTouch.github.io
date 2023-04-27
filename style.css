@@ -44,34 +44,46 @@ figcaption {
   text-align: center;
   font-size: 14px;
 }
-.dialog {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #000;
-  padding: 20px;
-  z-index: 1000;
-}
 
-.dialog-image {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto 20px;
-}
+.close-button {
+   position: absolute;
+   top: 10px;
+   right: 10px;
+   width: 24px;
+   height: 24px;
+   cursor: pointer;
+ }
 
-.copy-button {
-  display: block;
-  background-color: #FF6CA8;
-  border: none;
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
+ .dialog-image {
+   max-width: 100%;
+   height: auto;
+   display: block;
+   margin: 0 auto 40px;
+ }
 
-.copy-button:hover {
-  background-color: #E65C9F;
+ .copy-button {
+   display: block;
+   background-color: #FF6CA8;
+   border: none;
+   color: #fff;
+   padding: 10px 20px;
+   border-radius: 5px;
+   cursor: pointer;
+   transition: background-color 0.3s ease;
+   margin-top: 20px;
+   margin-bottom: 10px;
+ }
+
+ .copy-button:hover {
+   background-color: #E65C9F;
+ }
+
+ .dialog {
+   position: fixed;
+   top: 50%;
+   transform: translate(0%, -50%);
+   background-color: #000;
+   padding: 20px;
+   z-index: 1000;
+    border: 5px solid #FF6CA8;
 }

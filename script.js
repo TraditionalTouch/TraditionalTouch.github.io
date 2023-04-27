@@ -59,27 +59,48 @@ fetch(`https://api.github.com/repos/${username}/${repository}/contents/${folder}
       observer.observe(img);
 
       img.addEventListener("click", function () {
-          const dialog = document.createElement("dialog");
-          dialog.classList.add("dialog");
-          const imgCopy = img.cloneNode(true);
-          imgCopy.classList.remove("hidden");
-          imgCopy.classList.add("dialog-image");
-          const copyButton = document.createElement("button");
-          copyButton.innerText = "Copy URL";
-          copyButton.classList.add("copy-button");
-          copyButton.addEventListener("click", function () {
-            const url = image.url;
-            navigator.clipboard.writeText(url);
-          });
-          dialog.appendChild(imgCopy);
-          dialog.appendChild(copyButton);
-          document.body.appendChild(dialog);
-          dialog.showModal();
-          dialog.addEventListener("click", function () {
+        const dialog = document.createElement("dialog");
+        dialog.classList.add("dialog");
+
+        const closeButton = document.createElement("img");
+        closeButton.src = "Assets/close.svg";
+        closeButton.alt = "Close";
+        closeButton.classList.add("close-button");
+        closeButton.addEventListener("click", function () {
+          dialog.close();
+          dialog.remove();
+        });
+        dialog.appendChild(closeButton);
+
+        const imgCopy = img.cloneNode(true);
+        imgCopy.classList.remove("hidden");
+        imgCopy.classList.add("dialog-image");
+
+        const copyButton = document.createElement("button");
+        copyButton.innerText = "Copy URL";
+        copyButton.classList.add("copy-button");
+        copyButton.style.backgroundColor = "#FF6CA8";
+        copyButton.style.position = "absolute";
+        copyButton.style.bottom = "10px";
+        copyButton.style.left = "50%";
+        copyButton.style.transform = "translateX(-50%)";
+        copyButton.addEventListener("click", function () {
+          const url = image.url;
+          navigator.clipboard.writeText(url);
+        });
+
+        dialog.appendChild(closeButton);
+        dialog.appendChild(imgCopy);
+        dialog.appendChild(copyButton);
+        document.body.appendChild(dialog);
+        dialog.showModal();
+        dialog.addEventListener("click", function (event) {
+          if (event.target === dialog) {
             dialog.close();
             dialog.remove();
-          });
+          }
         });
+      });
     });
   })
   .catch((error) => console.error(error));
