@@ -65,7 +65,6 @@ fetch(`https://api.github.com/repos/${username}/${repository}/contents/${folder}
 					dialog.close();
 					dialog.remove();
 				});
-				dialog.appendChild(closeButton);
 				const imgCopy = img.cloneNode(true);
 				imgCopy.classList.remove("hidden");
 				imgCopy.classList.add("dialog-image");
